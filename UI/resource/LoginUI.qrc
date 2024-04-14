@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="door">
+    <file>logo (自定义).png</file>
+    <file>login (自定义).jpg</file>
+    <file>logo.png</file>
+  </qresource>
+</RCC>

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StuAddSingle</class>
+ <widget class="QWidget" name="StuAddSingle">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1400</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>学籍管理系统</string>
+  </property>
+  <widget class="PrimaryPushButton" name="uploadButton">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>780</y>
+     <width>153</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>提交</string>
+   </property>
+  </widget>
+  <widget class="PrimaryPushButton" name="clearButton">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>780</y>
+     <width>153</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>清除</string>
+   </property>
+  </widget>
+  <widget class="PrimaryPushButton" name="returnButton">
+   <property name="geometry">
+    <rect>
+     <x>850</x>
+     <y>780</y>
+     <width>153</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>返回</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>60</y>
+     <width>1071</width>
+     <height>641</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0" rowspan="2">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="ImageLabel" name="PictureLabel"/>
+      </item>
+      <item>
+       <widget class="PushButton" name="uploadPicButton">
+        <property name="text">
+         <string>上传照片</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_9">
+      <item>
+       <widget class="BodyLabel" name="stuLabel">
+        <property name="text">
+         <string>幼儿姓名：</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="LineEdit" name="stuName"/>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_10">
+      <item>
+       <widget class="BodyLabel" name="bodyLabel_3">
+        <property name="text">
+         <string>出生地</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="LineEdit" name="stuBirthAddress"/>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_8">
+      <item>
+       <widget class="BodyLabel" name="sexLabel">
+        <property name="text">
+         <string>性别:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="ComboBox" name="stuSex"/>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_11">
+      <item>
+       <widget class="BodyLabel" name="bodyLabel_4">
+        <property name="text">
+         <string>国籍</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="EditableComboBox" name="Country"/>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_7">
+      <item>
+       <widget class="BodyLabel" name="bodyLabel">
+        <property name="text">
+         <string>身份证号码</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="LineEdit" name="stuIDCard"/>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_12">
+      <item>
+       <widget class="BodyLabel" name="bodyLabel_5">
+        <property name="text">
+         <string>民族</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="EditableComboBox" name="Nation"/>
+      </item>
+     </layout>
+    </item>
+    <item row="3" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_6">
+      <item>
+       <widget class="BodyLabel" name="bodyLabel_2">
+        <property name="text">
+         <string>户籍地址</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="LineEdit" name="stuIDAddress"/>
+      </item>
+     </layout>
+    </item>
+    <item row="4" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="BodyLabel" name="bodyLabel_6">
+        <property name="text">
+         <string>父亲姓名</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="LineEdit" name="faName"/>
+      </item>
+     </layout>
+    </item>
+    <item row="4" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_13">
+      <item>
+       <widget class="BodyLabel" name="bodyLabel_7">
+        <property name="text">
+         <string>母亲姓名</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="LineEdit" name="moName"/>
+      </item>
+     </layout>
+    </item>
+    <item row="5" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="BodyLabel" name="bodyLabel_8">
+        <property name="text">
+         <string>父亲身份证</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="LineEdit" name="faIDCard"/>
+      </item>
+     </layout>
+    </item>
+    <item row="5" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="BodyLabel" name="bodyLabel_9">
+        <property name="text">
+         <string>母亲身份证</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="LineEdit" name="moIDCard"/>
+      </item>
+     </layout>
+    </item>
+    <item row="6" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="BodyLabel" name="bodyLabel_10">
+        <property name="text">
+         <string>父亲联系号码</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="LineEdit" name="faTelecom"/>
+      </item>
+     </layout>
+    </item>
+    <item row="6" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="BodyLabel" name="bodyLabel_11">
+        <property name="text">
+         <string>母亲联系号码</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="LineEdit" name="moTelecom"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QPushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>EditableComboBox</class>
+   <extends>LineEdit</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PrimaryPushButton</class>
+   <extends>PushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>BodyLabel</class>
+   <extends>QLabel</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>ImageLabel</class>
+   <extends>QLabel</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
