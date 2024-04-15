@@ -13,46 +13,7 @@
   <property name="windowTitle">
    <string>学籍管理系统</string>
   </property>
-  <widget class="PrimaryPushButton" name="uploadButton">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>780</y>
-     <width>153</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>提交</string>
-   </property>
-  </widget>
-  <widget class="PrimaryPushButton" name="clearButton">
-   <property name="geometry">
-    <rect>
-     <x>580</x>
-     <y>780</y>
-     <width>153</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>清除</string>
-   </property>
-  </widget>
-  <widget class="PrimaryPushButton" name="returnButton">
-   <property name="geometry">
-    <rect>
-     <x>850</x>
-     <y>780</y>
-     <width>153</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>返回</string>
-   </property>
-  </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -257,6 +218,46 @@
        <widget class="LineEdit" name="moTelecom"/>
       </item>
      </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>780</y>
+     <width>511</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_14">
+    <item>
+     <widget class="PrimaryPushButton" name="uploadButton_2">
+      <property name="text">
+       <string>批量添加</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="PrimaryPushButton" name="uploadButton">
+      <property name="text">
+       <string>提交</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="PrimaryPushButton" name="clearButton">
+      <property name="text">
+       <string>清除</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="PrimaryPushButton" name="returnButton">
+      <property name="text">
+       <string>返回</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
