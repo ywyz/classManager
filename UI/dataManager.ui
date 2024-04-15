@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>dataManager</class>
+ <widget class="QWidget" name="dataManager">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1400</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>资料管理系统</string>
+  </property>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>56</y>
+     <width>1321</width>
+     <height>831</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0" colspan="3">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="DateEdit" name="DateEdit"/>
+      </item>
+      <item>
+       <widget class="CaptionLabel" name="CaptionLabel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="BodyLabel" name="BodyLabel">
+        <property name="text">
+         <string>资料名称</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="dataCombo"/>
+      </item>
+      <item>
+       <widget class="PrimaryPushButton" name="dateQueryButton">
+        <property name="text">
+         <string>查询</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="PrimaryPushButton" name="suggestButton">
+        <property name="text">
+         <string>建议</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="PrimaryPushButton" name="SaveButton">
+        <property name="text">
+         <string>保存</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="PrimaryPushButton" name="clearButton">
+        <property name="text">
+         <string>清除</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="PrimaryPushButton" name="ImportButton">
+        <property name="text">
+         <string>导出</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="PrimaryPushButton" name="returnButton">
+        <property name="text">
+         <string>返回</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0" rowspan="3">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="BodyLabel" name="BodyLabel_2">
+          <property name="text">
+           <string>名称</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="LineEdit" name="NameEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="BodyLabel" name="BodyLabel_3">
+          <property name="text">
+           <string>地点</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="LineEdit" name="AddressEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="BodyLabel" name="BodyLabel_4">
+          <property name="text">
+           <string>目标</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="PlainTextEdit" name="GoalEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="BodyLabel" name="BodyLabel_5">
+          <property name="text">
+           <string>指导要点</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="PlainTextEdit" name="pointEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="BodyLabel" name="BodyLabel_6">
+          <property name="text">
+           <string>重点</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="LineEdit" name="importantedit"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_8">
+        <item>
+         <widget class="BodyLabel" name="BodyLabel_7">
+          <property name="text">
+           <string>难点</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="LineEdit" name="difficultEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <widget class="BodyLabel" name="BodyLabel_8">
+          <property name="text">
+           <string>准备</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="PlainTextEdit" name="prepareEdit"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="1" rowspan="3">
+     <layout class="QHBoxLayout" name="horizontalLayout_9">
+      <item>
+       <widget class="BodyLabel" name="BodyLabel_9">
+        <property name="text">
+         <string>内容</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="PlainTextEdit" name="InputEdit"/>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_11">
+      <item>
+       <widget class="BodyLabel" name="BodyLabel_11">
+        <property name="text">
+         <string>评价</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="PlainTextEdit" name="GoalEdit_2"/>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_12">
+      <item>
+       <widget class="BodyLabel" name="BodyLabel_12">
+        <property name="text">
+         <string>支持策略</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="PlainTextEdit" name="GoalEdit_3"/>
+      </item>
+     </layout>
+    </item>
+    <item row="3" column="2">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_13">
+        <item>
+         <widget class="ImageLabel" name="ImageLabel"/>
+        </item>
+        <item>
+         <widget class="ImageLabel" name="ImageLabel_2"/>
+        </item>
+        <item>
+         <widget class="ImageLabel" name="ImageLabel_3"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="PrimaryPushButton" name="uploadButton">
+        <property name="text">
+         <string>图片上传</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PrimaryPushButton</class>
+   <extends>PushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>CaptionLabel</class>
+   <extends>QLabel</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>BodyLabel</class>
+   <extends>QLabel</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>ImageLabel</class>
+   <extends>QLabel</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PlainTextEdit</class>
+   <extends>QPlainTextEdit</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>DateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

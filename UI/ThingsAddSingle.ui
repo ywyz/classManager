@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ThingsAddSingle</class>
+ <widget class="QWidget" name="ThingsAddSingle">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1394</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>物品管理系统</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>650</y>
+     <width>511</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_14">
+    <item>
+     <widget class="PrimaryPushButton" name="uploadButton">
+      <property name="text">
+       <string>提交</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="PrimaryPushButton" name="clearButton">
+      <property name="text">
+       <string>清除</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="PrimaryPushButton" name="returnButton">
+      <property name="text">
+       <string>返回</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>411</x>
+     <y>267</y>
+     <width>591</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="ImageLabel" name="PictureLabel"/>
+      </item>
+      <item>
+       <widget class="PushButton" name="uploadPicButton">
+        <property name="text">
+         <string>上传照片</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="BodyLabel" name="stuLabel">
+        <property name="text">
+         <string>物品名称</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="LineEdit" name="thingsName"/>
+      </item>
+      <item>
+       <widget class="BodyLabel" name="bodyLabel_3">
+        <property name="text">
+         <string>条码</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="LineEdit" name="barCode"/>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="BodyLabel" name="sexLabel">
+        <property name="text">
+         <string>目前所在位置</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="LineEdit" name="Address"/>
+      </item>
+      <item>
+       <widget class="BodyLabel" name="bodyLabel_4">
+        <property name="text">
+         <string>是否需要维修</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="CheckBox" name="YesBox">
+        <property name="text">
+         <string>是</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="CheckBox" name="NoBox">
+        <property name="text">
+         <string>否</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PrimaryPushButton</class>
+   <extends>PushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>BodyLabel</class>
+   <extends>QLabel</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>ImageLabel</class>
+   <extends>QLabel</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
