@@ -21,10 +21,10 @@ from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QSizePoli
 from qfluentwidgets import (BodyLabel, CheckBox, ImageLabel, LineEdit,
     PrimaryPushButton, PushButton)
 
-class Ui_ThingsAddSingle(object):
+class Ui_ThingsAddSingle(QWidget):
     def setupUi(self, ThingsAddSingle):
-        if not ThingsAddSingle.objectName():
-            ThingsAddSingle.setObjectName(u"ThingsAddSingle")
+
+        ThingsAddSingle.setObjectName(u"ThingsAddSingle")
         ThingsAddSingle.resize(1394, 900)
         self.layoutWidget = QWidget(ThingsAddSingle)
         self.layoutWidget.setObjectName(u"layoutWidget")
@@ -142,4 +142,3 @@ class Ui_ThingsAddSingle(object):
         self.YesBox.setText(QCoreApplication.translate("ThingsAddSingle", u"\u662f", None))
         self.NoBox.setText(QCoreApplication.translate("ThingsAddSingle", u"\u5426", None))
     # retranslateUi
-

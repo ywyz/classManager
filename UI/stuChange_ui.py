@@ -20,10 +20,10 @@ from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QHeaderVi
 
 from qfluentwidgets import (PrimaryPushButton, PushButton, TableWidget)
 
-class Ui_StuChange(object):
+class Ui_StuChange(QWidget):
     def setupUi(self, StuChange):
-        if not StuChange.objectName():
-            StuChange.setObjectName(u"StuChange")
+
+        StuChange.setObjectName(u"StuChange")
         StuChange.resize(1400, 900)
         self.widget = QWidget(StuChange)
         self.widget.setObjectName(u"widget")

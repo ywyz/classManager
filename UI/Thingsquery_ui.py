@@ -20,12 +20,12 @@ from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QHeaderVi
 
 from qfluentwidgets import (PrimaryPushButton, PushButton, TableWidget)
 
-class Ui_StuDailyAttend(object):
-    def setupUi(self, StuDailyAttend):
-        if not StuDailyAttend.objectName():
-            StuDailyAttend.setObjectName(u"StuDailyAttend")
-        StuDailyAttend.resize(1400, 900)
-        self.layoutWidget = QWidget(StuDailyAttend)
+class Ui_ThingsQuery(QWidget):
+    def setupUi(self, ThingsQuery):
+
+        ThingsQuery.setObjectName(u"ThingsQuery")
+        ThingsQuery.resize(1400, 900)
+        self.layoutWidget = QWidget(ThingsQuery)
         self.layoutWidget.setObjectName(u"layoutWidget")
         self.layoutWidget.setGeometry(QRect(120, 60, 1071, 661))
         self.gridLayout = QGridLayout(self.layoutWidget)
@@ -46,7 +46,7 @@ class Ui_StuDailyAttend(object):
 
         self.gridLayout.addWidget(self.TableWidget, 1, 0, 1, 3)
 
-        self.layoutWidget1 = QWidget(StuDailyAttend)
+        self.layoutWidget1 = QWidget(ThingsQuery)
         self.layoutWidget1.setObjectName(u"layoutWidget1")
         self.layoutWidget1.setGeometry(QRect(421, 819, 551, 51))
         self.horizontalLayout = QHBoxLayout(self.layoutWidget1)
@@ -73,18 +73,17 @@ class Ui_StuDailyAttend(object):
         self.horizontalLayout.addWidget(self.SaveButton_2)
 
 
-        self.retranslateUi(StuDailyAttend)
+        self.retranslateUi(ThingsQuery)
 
-        QMetaObject.connectSlotsByName(StuDailyAttend)
+        QMetaObject.connectSlotsByName(ThingsQuery)
     # setupUi
 
-    def retranslateUi(self, StuDailyAttend):
-        StuDailyAttend.setWindowTitle(QCoreApplication.translate("StuDailyAttend", u"\u7269\u8d44\u7ba1\u7406\u7cfb\u7edf", None))
-        self.queryChildButton.setText(QCoreApplication.translate("StuDailyAttend", u"\u67e5\u8be2", None))
-        self.lineEdit.setText(QCoreApplication.translate("StuDailyAttend", u"\u8bf7\u8f93\u5165\u8981\u67e5\u627e\u7269\u54c1\u7684\u540d\u5b57", None))
-        self.SaveButton.setText(QCoreApplication.translate("StuDailyAttend", u"\u4fdd\u5b58", None))
-        self.deleteButton.setText(QCoreApplication.translate("StuDailyAttend", u"\u5220\u9664", None))
-        self.returnButton.setText(QCoreApplication.translate("StuDailyAttend", u"\u8fd4\u56de", None))
-        self.SaveButton_2.setText(QCoreApplication.translate("StuDailyAttend", u"\u5bfc\u51fa", None))
+    def retranslateUi(self, ThingsQuery):
+        ThingsQuery.setWindowTitle(QCoreApplication.translate("ThingsQuery", u"\u7269\u8d44\u7ba1\u7406\u7cfb\u7edf", None))
+        self.queryChildButton.setText(QCoreApplication.translate("ThingsQuery", u"\u67e5\u8be2", None))
+        self.lineEdit.setText(QCoreApplication.translate("ThingsQuery", u"\u8bf7\u8f93\u5165\u8981\u67e5\u627e\u7269\u54c1\u7684\u540d\u5b57", None))
+        self.SaveButton.setText(QCoreApplication.translate("ThingsQuery", u"\u4fdd\u5b58", None))
+        self.deleteButton.setText(QCoreApplication.translate("ThingsQuery", u"\u5220\u9664", None))
+        self.returnButton.setText(QCoreApplication.translate("ThingsQuery", u"\u8fd4\u56de", None))
+        self.SaveButton_2.setText(QCoreApplication.translate("ThingsQuery", u"\u5bfc\u51fa", None))
     # retranslateUi
-

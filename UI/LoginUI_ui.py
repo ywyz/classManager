@@ -2,20 +2,21 @@
 
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
+                            QMetaObject, QObject, QPoint, QRect,
+                            QSize, QTime, QUrl, Qt)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
+                           QFont, QFontDatabase, QGradient, QIcon,
+                           QImage, QKeySequence, QLinearGradient, QPainter,
+                           QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QSizePolicy,
-    QVBoxLayout, QWidget)
+                               QVBoxLayout, QWidget)
 
 from qfluentwidgets import (CaptionLabel, CheckBox, DisplayLabel, HyperlinkButton,
-    LineEdit, PasswordLineEdit, PrimaryPushButton, PushButton)
+                            LineEdit, PasswordLineEdit, PrimaryPushButton, PushButton)
 import resource.LoginUI_rc
 
-class Ui_Login_UI(object):
+
+class Ui_Login_UI(QWidget):
     def setupUi(self, Login_UI):
         if not Login_UI.objectName():
             Login_UI.setObjectName(u"Login_UI")
@@ -94,19 +95,25 @@ class Ui_Login_UI(object):
 
         self.horizontalLayout.addWidget(self.PasswordLineEdit)
 
-
         self.retranslateUi(Login_UI)
 
         QMetaObject.connectSlotsByName(Login_UI)
+
     # setupUi
 
     def retranslateUi(self, Login_UI):
         Login_UI.setWindowTitle(QCoreApplication.translate("Login_UI", u"\u767b\u5f55\u754c\u9762", None))
-        self.login_pic.setText(QCoreApplication.translate("Login_UI", u"<html><head/><body><p><img src=\":/door/login (\u81ea\u5b9a\u4e49).jpg\"/></p></body></html>", None))
+        self.login_pic.setText(QCoreApplication.translate("Login_UI",
+                                                          u"<html><head/><body><p><img src=\":/door/login (\u81ea\u5b9a\u4e49).jpg\"/></p></body></html>",
+                                                          None))
         self.label.setText("")
-        self.DisplayLabel.setText(QCoreApplication.translate("Login_UI", u"\u6b22\u8fce\u4f7f\u7528\u73ed\u7ea7\u4fdd\u6559\u7ba1\u7406\u7cfb\u7edf", None))
+        self.DisplayLabel.setText(QCoreApplication.translate("Login_UI",
+                                                             u"\u6b22\u8fce\u4f7f\u7528\u73ed\u7ea7\u4fdd\u6559\u7ba1\u7406\u7cfb\u7edf",
+                                                             None))
         self.CheckBox.setText(QCoreApplication.translate("Login_UI", u"\u8bb0\u4f4f\u6211", None))
-        self.label_2.setText(QCoreApplication.translate("Login_UI", u"<html><head/><body><p><img src=\":/door/logo (\u81ea\u5b9a\u4e49).png\"/></p></body></html>", None))
+        self.label_2.setText(QCoreApplication.translate("Login_UI",
+                                                        u"<html><head/><body><p><img src=\":/door/logo (\u81ea\u5b9a\u4e49).png\"/></p></body></html>",
+                                                        None))
         self.UserName_Label.setText(QCoreApplication.translate("Login_UI", u"\u7528\u6237\u540d\uff1a", None))
         self.PrimaryPushButton.setText(QCoreApplication.translate("Login_UI", u"\u767b\u5f55", None))
         self.HyperlinkButton.setText(QCoreApplication.translate("Login_UI", u"\u627e\u56de\u5bc6\u7801", None))

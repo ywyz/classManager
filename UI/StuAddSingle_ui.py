@@ -21,7 +21,7 @@ from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QSizePoli
 from qfluentwidgets import (BodyLabel, ComboBox, EditableComboBox, ImageLabel,
     LineEdit, PrimaryPushButton, PushButton)
 
-class Ui_StuAddSingle(object):
+class Ui_StuAddSingle(QWidget):
     def setupUi(self, StuAddSingle):
         if not StuAddSingle.objectName():
             StuAddSingle.setObjectName(u"StuAddSingle")
@@ -295,4 +295,3 @@ class Ui_StuAddSingle(object):
         self.clearButton.setText(QCoreApplication.translate("StuAddSingle", u"\u6e05\u9664", None))
         self.returnButton.setText(QCoreApplication.translate("StuAddSingle", u"\u8fd4\u56de", None))
     # retranslateUi
-

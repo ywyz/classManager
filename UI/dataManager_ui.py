@@ -21,10 +21,10 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QGridLayout, QHBoxLayout
 from qfluentwidgets import (BodyLabel, CaptionLabel, DateEdit, ImageLabel,
     LineEdit, PlainTextEdit, PrimaryPushButton, PushButton)
 
-class Ui_dataManager(object):
+class Ui_dataManager(QWidget):
     def setupUi(self, dataManager):
-        if not dataManager.objectName():
-            dataManager.setObjectName(u"dataManager")
+
+        dataManager.setObjectName(u"dataManager")
         dataManager.resize(1400, 900)
         self.widget = QWidget(dataManager)
         self.widget.setObjectName(u"widget")
@@ -301,3 +301,11 @@ class Ui_dataManager(object):
         self.uploadButton.setText(QCoreApplication.translate("dataManager", u"\u56fe\u7247\u4e0a\u4f20", None))
     # retranslateUi
 
+if __name__ == "__main__":
+    import sys
+    app = QApplication(sys.argv)
+    dataManager = QWidget()
+    ui = Ui_dataManager()
+    ui.setupUi(dataManager)
+    dataManager.show()
+    sys.exit(app.exec_())

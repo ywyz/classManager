@@ -21,10 +21,10 @@ from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QHeaderVi
 from qfluentwidgets import (DatePicker, PrimaryPushButton, PushButton, TableWidget,
     ZhDatePicker)
 
-class Ui_StuDailyAttend(object):
+class Ui_StuDailyAttend(QWidget):
     def setupUi(self, StuDailyAttend):
-        if not StuDailyAttend.objectName():
-            StuDailyAttend.setObjectName(u"StuDailyAttend")
+
+        StuDailyAttend.setObjectName(u"StuDailyAttend")
         StuDailyAttend.resize(1400, 900)
         self.widget = QWidget(StuDailyAttend)
         self.widget.setObjectName(u"widget")
@@ -99,4 +99,3 @@ class Ui_StuDailyAttend(object):
         self.returnButton.setText(QCoreApplication.translate("StuDailyAttend", u"\u8fd4\u56de", None))
         self.SaveButton_2.setText(QCoreApplication.translate("StuDailyAttend", u"\u5bfc\u51fa", None))
     # retranslateUi
-

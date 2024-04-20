@@ -20,10 +20,10 @@ from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QHeaderVi
 
 from qfluentwidgets import (PrimaryPushButton, PushButton, SpinBox, TableWidget)
 
-class Ui_StuHealthy(object):
+class Ui_StuHealthy(QWidget):
     def setupUi(self, StuHealthy):
-        if not StuHealthy.objectName():
-            StuHealthy.setObjectName(u"StuHealthy")
+
+        StuHealthy.setObjectName(u"StuHealthy")
         StuHealthy.resize(1581, 900)
         self.widget = QWidget(StuHealthy)
         self.widget.setObjectName(u"widget")
@@ -111,4 +111,3 @@ class Ui_StuHealthy(object):
         self.lineEdit.setText(QCoreApplication.translate("StuHealthy", u"\u8bf7\u8f93\u5165\u8981\u67e5\u627e\u5e7c\u513f\u7684\u59d3\u540d", None))
         self.queryChildButton.setText(QCoreApplication.translate("StuHealthy", u"\u67e5\u8be2", None))
     # retranslateUi
-
