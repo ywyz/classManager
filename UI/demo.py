@@ -18,7 +18,6 @@ from qfluentwidgets import FluentIcon as FIF
 
 class Window(FluentWindow):
     def __init__(self):
-
         super().__init__()
         self.StuAddSingle = StuAddSingleinterface(self)
         self.StuDailyAttend = StuDailyAttendinterface(self)
@@ -28,11 +27,15 @@ class Window(FluentWindow):
         self.ThingsQuery = ThingsQueryinterface(self)
         self.dataManager = dataManagerinterface(self)
 
+        self.StuAddSingle.setObjectName("StuAddSingle")
+        self.StuDailyAttend.setObjectName("StuDailyAttend")
+        self.StuHealthy.setObjectName("StuHealthy")
+        self.StuChange.setObjectName("StuChange")
+        self.ThingsAddSingle.setObjectName("ThingsAddSingle")
+        self.ThingsQuery.setObjectName("ThingsQuery")
+        self.dataManager.setObjectName("dataManager")
         self.initNavigation()
         self.initWindow()
-
-
-
 
     def initNavigation(self):
         self.addSubInterface(self.StuAddSingle, FIF.PEOPLE, "学生添加")
@@ -44,18 +47,9 @@ class Window(FluentWindow):
         self.addSubInterface(self.dataManager, FIF.FOLDER, "数据管理")
 
     def initWindow(self):
-        self.resize(1400, 900)
+        self.resize(1920, 1080)
         self.setWindowIcon(QIcon(':/qfluentwidgets/images/logo.png'))
         self.setWindowTitle('PyQt-Fluent-Widgets')
-
-    def switchTo(self, interface) -> None:
-        self.addSubInterface(interface, FIF.PEOPLE, "学生添加")
-        self.addSubInterface(interface, FIF.CLOUD, "学生考勤")
-        self.addSubInterface(interface, FIF.HEART, "学生健康")
-        self.addSubInterface(interface, FIF.EDIT, "学生修改")
-        self.addSubInterface(interface, FIF.ADD, "物品添加")
-        self.addSubInterface(interface, FIF.SEARCH, "物品查询")
-        self.addSubInterface(interface, FIF.FOLDER, "数据管理")
 
 
 if __name__ == '__main__':
