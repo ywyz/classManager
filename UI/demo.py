@@ -47,7 +47,7 @@ class Window(FluentWindow):
         self.addSubInterface(self.dataManager, FIF.FOLDER, "数据管理")
 
     def initWindow(self):
-        self.resize(1920, 1080)
+        self.resize(1400, 900)
         self.setWindowIcon(QIcon(':/qfluentwidgets/images/logo.png'))
         self.setWindowTitle('PyQt-Fluent-Widgets')
 
