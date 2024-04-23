@@ -138,7 +138,7 @@
         <item>
          <widget class="BodyLabel" name="BodyLabel_5">
           <property name="text">
-           <string>指导要点</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;指导&lt;/p&gt;&lt;p&gt;要点&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -224,7 +224,7 @@
       <item>
        <widget class="BodyLabel" name="BodyLabel_12">
         <property name="text">
-         <string>支持策略</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;支持&lt;/p&gt;&lt;p&gt;策略&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>

@@ -2,67 +2,54 @@ from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtWidgets import QWidget
 from qfluentwidgets import FluentIcon as FIF
 from qfluentwidgets import FluentWindow, NavigationItemPosition, SubtitleLabel, setFont
-from LoginUI_ui import Ui_Login_UI
-from StuAddSingle_ui import Ui_StuAddSingle
-from stuAttend_ui import Ui_StuDailyAttend
-from stuhealthy_ui import Ui_StuHealthy
-from stuChange_ui import Ui_StuChange
-from ThingsAddSingle_ui import Ui_ThingsAddSingle
-from Thingsquery_ui import Ui_ThingsQuery
-from dataManager_ui import Ui_dataManager
+from LoginUI import Ui_Login_UI
+from StuAddSingle import Ui_StuAddSingle
+from StuAttend import Ui_StuDailyAttend
+from Stuhealthy import Ui_StuHealthy
+from StuChange import Ui_StuChange
+from ThingsAddSingle import Ui_ThingsAddSingle
+from Thingsquery import Ui_ThingsQuery
+from DataManager import Ui_dataManager
 
 
-class dataManagerinterface(Ui_dataManager):
+class dataManagerinterface(QWidget, Ui_dataManager):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.widget = QWidget(parent)
-        self.setupUi(self.widget)
-        self.widget.resize(1400, 900)
+        self.setupUi(self)
 
 
-class ThingsQueryinterface(Ui_ThingsQuery):
+class ThingsQueryinterface(QWidget, Ui_ThingsQuery):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.widget = QWidget(parent)
-        self.setupUi(self.widget)
-        self.widget.resize(1400, 900)
+        self.setupUi(self)
 
 
-class ThingsAddSingleinterface(Ui_ThingsAddSingle):
+class ThingsAddSingleinterface(QWidget, Ui_ThingsAddSingle):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.widget = QWidget(parent)
-        self.setupUi(self.widget)
-        self.widget.resize(1400, 900)
+        self.setupUi(self)
 
 
-class StuChangeinterface(Ui_StuChange):
+class StuChangeinterface(QWidget, Ui_StuChange):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.widget = QWidget(parent)
-        self.setupUi(self.widget)
-        self.widget.resize(1400, 900)
+        self.setupUi(self)
 
 
-class StuHealthyinterface(Ui_StuHealthy):
+class StuHealthyinterface(QWidget, Ui_StuHealthy):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.widget = QWidget(parent)
-        self.setupUi(self.widget)
-        self.widget.resize(1400, 900)
+        self.setupUi(self)
 
 
-class StuDailyAttendinterface(Ui_StuDailyAttend):
+class StuDailyAttendinterface(QWidget, Ui_StuDailyAttend):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.widget = QWidget(parent)
-        self.setupUi(self.widget)
-        self.widget.resize(1400, 900)
+        self.setupUi(self)
 
 
-class StuAddSingleinterface( Ui_StuAddSingle):
+class StuAddSingleinterface(QWidget, Ui_StuAddSingle):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.widget = QWidget(parent)
-        self.setupUi(self.widget)
-        self.widget.resize(1400, 900)
+        self.setupUi(self)
+

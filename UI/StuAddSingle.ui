@@ -221,10 +221,10 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>390</x>
      <y>780</y>
      <width>511</width>
      <height>41</height>
