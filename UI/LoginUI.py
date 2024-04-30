@@ -64,9 +64,6 @@ class Ui_Login_UI(object):
         self.PrimaryPushButton = PrimaryPushButton(self.layoutWidget1)
         self.PrimaryPushButton.setObjectName("PrimaryPushButton")
         self.verticalLayout.addWidget(self.PrimaryPushButton)
-        self.HyperlinkButton = HyperlinkButton(self.layoutWidget1)
-        self.HyperlinkButton.setObjectName("HyperlinkButton")
-        self.verticalLayout.addWidget(self.HyperlinkButton)
         self.layoutWidget2 = QtWidgets.QWidget(Login_UI)
         self.layoutWidget2.setGeometry(QtCore.QRect(920, 440, 341, 35))
         self.layoutWidget2.setObjectName("layoutWidget2")
@@ -98,9 +95,8 @@ class Ui_Login_UI(object):
         self.label_2.setText(_translate("Login_UI", "<html><head/><body><p><img src=\":/door/logo (自定义).png\"/></p></body></html>"))
         self.UserName_Label.setText(_translate("Login_UI", "用户名："))
         self.PrimaryPushButton.setText(_translate("Login_UI", "登录"))
-        self.HyperlinkButton.setText(_translate("Login_UI", "找回密码"))
         self.CaptionLabel_2.setText(_translate("Login_UI", "密码："))
-from qfluentwidgets import CaptionLabel, CheckBox, DisplayLabel, HyperlinkButton, LineEdit, PasswordLineEdit, PrimaryPushButton
+from qfluentwidgets import CaptionLabel, CheckBox, DisplayLabel, LineEdit, PasswordLineEdit, PrimaryPushButton
 import resource.LoginUI_rc
 
 
@@ -111,4 +107,4 @@ if __name__ == "__main__":
     ui = Ui_Login_UI()
     ui.setupUi(Login_UI)
     Login_UI.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
