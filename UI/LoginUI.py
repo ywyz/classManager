@@ -9,9 +9,15 @@
 
 
 from PySide6 import QtCore, QtGui, QtWidgets
+from Functions.SQLConnect import SQLConnect
 
 
-class Ui_Login_UI(object):
+class Ui_Login_UI(QtWidgets.QWidget):
+    def __init__(self, window):
+        super().__init__()
+        self.window = window
+        self.setupUi(self)
+
     def setupUi(self, Login_UI):
         Login_UI.setObjectName("Login_UI")
         Login_UI.resize(1400, 908)
@@ -83,28 +89,48 @@ class Ui_Login_UI(object):
         self.PasswordLineEdit.setObjectName("PasswordLineEdit")
         self.horizontalLayout.addWidget(self.PasswordLineEdit)
 
+        self.PrimaryPushButton.clicked.connect(self.login)
+
         self.retranslateUi(Login_UI)
         QtCore.QMetaObject.connectSlotsByName(Login_UI)
 
     def retranslateUi(self, Login_UI):
         _translate = QtCore.QCoreApplication.translate
         Login_UI.setWindowTitle(_translate("Login_UI", "登录界面"))
-        self.login_pic.setText(_translate("Login_UI", "<html><head/><body><p><img src=\":/door/login (自定义).jpg\"/></p></body></html>"))
+        self.login_pic.setText(
+            _translate("Login_UI", "<html><head/><body><p><img src=\":/door/login (自定义).jpg\"/></p></body></html>"))
         self.DisplayLabel.setText(_translate("Login_UI", "欢迎使用班级保教管理系统"))
         self.CheckBox.setText(_translate("Login_UI", "记住我"))
-        self.label_2.setText(_translate("Login_UI", "<html><head/><body><p><img src=\":/door/logo (自定义).png\"/></p></body></html>"))
+        self.label_2.setText(
+            _translate("Login_UI", "<html><head/><body><p><img src=\":/door/logo (自定义).png\"/></p></body></html>"))
         self.UserName_Label.setText(_translate("Login_UI", "用户名："))
         self.PrimaryPushButton.setText(_translate("Login_UI", "登录"))
         self.CaptionLabel_2.setText(_translate("Login_UI", "密码："))
+
+    def login(self):
+        # 连接数据库
+        user = self.UserNameEdit.text()
+        password = self.PasswordLineEdit.text()
+        sql = SQLConnect(user, password)
+        if sql.connect():
+            from UI.demo import Window  # 导入主窗口类
+            self.main_window = Window()  # 创建主窗口实例
+            self.main_window.show()  # 显示主窗口
+            self.window.close()  # 关闭登录窗口
+
+        else:
+            QtWidgets.QMessageBox.information(self, "提示", "连接失败")
+
+
 from qfluentwidgets import CaptionLabel, CheckBox, DisplayLabel, LineEdit, PasswordLineEdit, PrimaryPushButton
 import resource.LoginUI_rc
 
-
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     Login_UI = QtWidgets.QWidget()
-    ui = Ui_Login_UI()
+    ui = Ui_Login_UI(Login_UI)
     ui.setupUi(Login_UI)
     Login_UI.show()
     sys.exit(app.exec())
