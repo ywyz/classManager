@@ -112,6 +112,7 @@ class Ui_Login_UI(QtWidgets.QWidget):
         user = self.UserNameEdit.text()
         password = self.PasswordLineEdit.text()
         sql = SQLConnect(user, password)
+        sql.setAccount()
         if sql.connect():
             from UI.demo import Window  # 导入主窗口类
             self.main_window = Window()  # 创建主窗口实例

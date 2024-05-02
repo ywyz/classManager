@@ -52,6 +52,8 @@ class Window(FluentWindow):
         self.setWindowTitle('PyQt-Fluent-Widgets')
 
 
+
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     w = Window()

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 
 # Form implementation generated from reading ui file 'C:/Users/yw980/code/classManager/UI/StuAddSingle.ui'
 #
@@ -9,6 +10,9 @@
 
 
 from PySide6 import QtCore, QtGui, QtWidgets
+from PySide6.QtWidgets import QFileDialog
+from Functions.SQLConnect import SQLConnect
+import pymysql
 
 
 class Ui_StuAddSingle(object):
@@ -153,9 +157,9 @@ class Ui_StuAddSingle(object):
         self.horizontalLayout_14 = QtWidgets.QHBoxLayout(self.layoutWidget1)
         self.horizontalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_14.setObjectName("horizontalLayout_14")
-        self.uploadButton_2 = PrimaryPushButton(self.layoutWidget1)
-        self.uploadButton_2.setObjectName("uploadButton_2")
-        self.horizontalLayout_14.addWidget(self.uploadButton_2)
+        # self.uploadButton_2 = PrimaryPushButton(self.layoutWidget1)
+        # self.uploadButton_2.setObjectName("uploadButton_2")
+        # self.horizontalLayout_14.addWidget(self.uploadButton_2)
         self.uploadButton = PrimaryPushButton(self.layoutWidget1)
         self.uploadButton.setObjectName("uploadButton")
         self.horizontalLayout_14.addWidget(self.uploadButton)
@@ -165,8 +169,13 @@ class Ui_StuAddSingle(object):
         self.returnButton = PrimaryPushButton(self.layoutWidget1)
         self.returnButton.setObjectName("returnButton")
         self.horizontalLayout_14.addWidget(self.returnButton)
+        self.stuSex.addItems("男 女".split())
 
         self.retranslateUi(StuAddSingle)
+        self.uploadPicButton.clicked.connect(StuAddSingle.uploadPic)
+        self.uploadButton.clicked.connect(StuAddSingle.uploadData)
+        self.clearButton.clicked.connect(StuAddSingle.clear)
+        self.returnButton.clicked.connect(StuAddSingle.returnWindow)
         QtCore.QMetaObject.connectSlotsByName(StuAddSingle)
 
     def retranslateUi(self, StuAddSingle):
@@ -186,8 +195,66 @@ class Ui_StuAddSingle(object):
         self.bodyLabel_9.setText(_translate("StuAddSingle", "母亲身份证"))
         self.bodyLabel_10.setText(_translate("StuAddSingle", "父亲联系号码"))
         self.bodyLabel_11.setText(_translate("StuAddSingle", "母亲联系号码"))
-        self.uploadButton_2.setText(_translate("StuAddSingle", "批量添加"))
+        # self.uploadButton_2.setText(_translate("StuAddSingle", "批量添加"))
         self.uploadButton.setText(_translate("StuAddSingle", "提交"))
         self.clearButton.setText(_translate("StuAddSingle", "清除"))
-        self.returnButton.setText(_translate("StuAddSingle", "返回"))
+        self.returnButton.setText(_translate("StuAddSingle", "关闭"))
+
+
+    def uploadPic(self):
+        self.picPath = self.openFileDialog()
+        self.PictureLabel .setPixmap(self.picPath)
+
+        self.PictureLabel .show()
+
+
+    def openFileDialog(self):
+        fileName, _ = QFileDialog.getOpenFileName(self, "Open Image", "",
+                                                  "Image Files (*.png *.jpg *jpeg *.bmp)")
+        return fileName
+
+    def uploadData(self):
+        name = self.stuName.text()
+        address = self.stuBirthAddress.text()
+        sex = self.stuSex.text()
+        idCard = self.stuIDCard.text()
+        birthday = idCard[6:14]
+        nation = self.Nation.text()
+        country = self.Country.text()
+        idAddress = self.stuIDAddress.text()
+        faName = self.faName.text()
+        moName = self.moName.text()
+        faIDCard = self.faIDCard.text()
+        moIDCard = self.moIDCard.text()
+        faTelecom = self.faTelecom.text()
+        moTelecom = self.moTelecom.text()
+        stuid = "G" + idCard
+        data = [stuid, name, sex, birthday, idCard, address, moName, moIDCard, faName, faIDCard, moTelecom, faTelecom,
+                idAddress]
+        sql = SQLConnect(os.environ.get('MYSQL_USER'), os.environ.get('MYSQL_PASSWORD'))
+        sql.connect()
+        try:
+            sql.uploadStudentData(data)
+
+        except pymysql.MySQLError as e:
+            print(f"Failed to connect to database: {e}")
+            QtWidgets.QMessageBox.information(self, "提示", "连接失败")
+
+    def clear(self):
+        self.stuName.clear()
+        self.stuBirthAddress.clear()
+        self.stuIDCard.clear()
+        self.stuIDAddress.clear()
+        self.faName.clear()
+        self.moName.clear()
+        self.faIDCard.clear()
+        self.moIDCard.clear()
+        self.faTelecom.clear()
+        self.moTelecom.clear()
+        self.PictureLabel.clear()
+
+    def returnWindow(self):
+        self.close()
+
+
 from qfluentwidgets import BodyLabel, ComboBox, EditableComboBox, ImageLabel, LineEdit, PrimaryPushButton, PushButton
