@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 
 # Form implementation generated from reading ui file 'C:/Users/yw980/code/classManager/UI/StuAttend.ui'
 #
@@ -9,7 +10,7 @@
 
 
 from PySide6 import QtCore, QtGui, QtWidgets
-
+from Functions.SQLConnect import  SQLConnect
 
 class Ui_StuDailyAttend(object):
     def setupUi(self, StuDailyAttend):
@@ -56,6 +57,7 @@ class Ui_StuDailyAttend(object):
         self.SaveButton_2 = PrimaryPushButton(self.widget1)
         self.SaveButton_2.setObjectName("SaveButton_2")
         self.horizontalLayout.addWidget(self.SaveButton_2)
+        self.queryDateButton.clicked.connect(self.loadData)
 
         self.retranslateUi(StuDailyAttend)
         QtCore.QMetaObject.connectSlotsByName(StuDailyAttend)
@@ -70,4 +72,27 @@ class Ui_StuDailyAttend(object):
         self.changeButton.setText(_translate("StuDailyAttend", "修改"))
         self.returnButton.setText(_translate("StuDailyAttend", "返回"))
         self.SaveButton_2.setText(_translate("StuDailyAttend", "导出"))
+
+    def loadData(self):
+        sql = SQLConnect(os.environ['MYSQL_USER'], os.environ['MYSQL_PASSWORD'])
+        sql.connect()
+        self.date = self.ZhDatePicker.date
+        query = f"select * from StudentDailyAttend where date = '{self.date}'"
+        results = sql.execute(query)
+        if not results:
+            query = f"select * from StudentData"
+            results = sql.execute(query)
+            for result in results:
+                result['date'] = self.date
+                result['is_attend'] = '是'  # 替换为你的默认值
+                result['reason'] = '无'  # 替换为你的默认值
+                result['is_gotohospital'] = '否'  # 替换为你的默认值
+        self.TableWidget.setRowCount(len(results))
+        self.TableWidget.setColumnCount(len(results[0]))
+        self.TableWidget.setHorizontalHeaderLabels(['日期','班级', '幼儿姓名', '出勤情况', '备注', '是否去医院'])
+        for i in range(len(results)):
+            for j in range(len(results[0])):
+                self.TableWidget.setItem(i, j, QtWidgets.QTableWidgetItem(str(results[i][j])))
+
+        self.TableWidget.setEditTriggers(QtWidgets.QTableWidget.AllEditTriggers)
 from qfluentwidgets import PrimaryPushButton, TableWidget, ZhDatePicker
