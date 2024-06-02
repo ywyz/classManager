@@ -95,4 +95,6 @@ class Ui_ThingsAddSingle(object):
         self.bodyLabel_4.setText(_translate("ThingsAddSingle", "是否需要维修"))
         self.YesBox.setText(_translate("ThingsAddSingle", "是"))
         self.NoBox.setText(_translate("ThingsAddSingle", "否"))
+
+
 from qfluentwidgets import BodyLabel, CheckBox, ImageLabel, LineEdit, PrimaryPushButton, PushButton

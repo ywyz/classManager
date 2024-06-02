@@ -9,12 +9,16 @@
 
 
 from PySide6 import QtCore, QtGui, QtWidgets
+from Functions.SQLConnect import SQLConnect
+import os
+
 
 
 class Ui_dataManager(object):
     def setupUi(self, dataManager):
         dataManager.setObjectName("dataManager")
         dataManager.resize(1400, 900)
+        self.widget = QtWidgets.QWidget(dataManager)
         self.layoutWidget = QtWidgets.QWidget(dataManager)
         self.layoutWidget.setGeometry(QtCore.QRect(50, 56, 1321, 831))
         self.layoutWidget.setObjectName("layoutWidget")
@@ -23,9 +27,9 @@ class Ui_dataManager(object):
         self.gridLayout.setObjectName("gridLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.DateEdit = DateEdit(self.layoutWidget)
-        self.DateEdit.setObjectName("DateEdit")
-        self.horizontalLayout.addWidget(self.DateEdit)
+        self.ZhDatePicker = ZhDatePicker(self.widget)
+        self.ZhDatePicker.setObjectName("ZhDatePicker")
+        self.horizontalLayout.addWidget(self.ZhDatePicker)
         self.CaptionLabel = CaptionLabel(self.layoutWidget)
         self.CaptionLabel.setText("")
         self.CaptionLabel.setObjectName("CaptionLabel")
@@ -36,12 +40,13 @@ class Ui_dataManager(object):
         self.dataCombo = QtWidgets.QComboBox(self.layoutWidget)
         self.dataCombo.setObjectName("dataCombo")
         self.horizontalLayout.addWidget(self.dataCombo)
+        self.dataCombo.addItems(['月计划', '周计划', '日计划', '观察记录', '其他资料'])
         self.dateQueryButton = PrimaryPushButton(self.layoutWidget)
         self.dateQueryButton.setObjectName("dateQueryButton")
         self.horizontalLayout.addWidget(self.dateQueryButton)
-        self.suggestButton = PrimaryPushButton(self.layoutWidget)
-        self.suggestButton.setObjectName("suggestButton")
-        self.horizontalLayout.addWidget(self.suggestButton)
+        # self.suggestButton = PrimaryPushButton(self.layoutWidget)
+        # self.suggestButton.setObjectName("suggestButton")
+        # self.horizontalLayout.addWidget(self.suggestButton)
         self.SaveButton = PrimaryPushButton(self.layoutWidget)
         self.SaveButton.setObjectName("SaveButton")
         self.horizontalLayout.addWidget(self.SaveButton)
@@ -169,13 +174,16 @@ class Ui_dataManager(object):
 
         self.retranslateUi(dataManager)
         QtCore.QMetaObject.connectSlotsByName(dataManager)
+        self.SaveButton.clicked.connect(self.addData)
+        self.dateQueryButton.clicked.connect(self.loadData)
+        self.clearButton.clicked.connect(self.clearData)
 
     def retranslateUi(self, dataManager):
         _translate = QtCore.QCoreApplication.translate
         dataManager.setWindowTitle(_translate("dataManager", "资料管理系统"))
         self.BodyLabel.setText(_translate("dataManager", "资料名称"))
         self.dateQueryButton.setText(_translate("dataManager", "查询"))
-        self.suggestButton.setText(_translate("dataManager", "建议"))
+        # self.suggestButton.setText(_translate("dataManager", "建议"))
         self.SaveButton.setText(_translate("dataManager", "保存"))
         self.clearButton.setText(_translate("dataManager", "清除"))
         self.ImportButton.setText(_translate("dataManager", "导出"))
@@ -191,4 +199,55 @@ class Ui_dataManager(object):
         self.BodyLabel_11.setText(_translate("dataManager", "评价"))
         self.BodyLabel_12.setText(_translate("dataManager", "<html><head/><body><p>支持</p><p>策略</p></body></html>"))
         self.uploadButton.setText(_translate("dataManager", "图片上传"))
-from qfluentwidgets import BodyLabel, CaptionLabel, DateEdit, ImageLabel, LineEdit, PlainTextEdit, PrimaryPushButton
+
+    def loadData(self):
+        date = self.ZhDatePicker.date
+        data = self.dataCombo.currentText()
+        sql = SQLConnect(os.environ['MYSQL_USER'], os.environ['MYSQL_PASSWORD'])
+        sql.execute(f"SELECT * FROM TeacherData WHERE date = {date}")
+        result = sql.cursor.fetchall()
+        self.NameEdit.setText(result[0][1])
+        self.AddressEdit.setText(result[0][2])
+        self.GoalEdit.setText(result[0][3])
+        self.pointEdit.setText(result[0][4])
+        self.importantedit.setText(result[0][5])
+        self.difficultEdit.setText(result[0][6])
+        self.prepareEdit.setText(result[0][7])
+        self.InputEdit.setText(result[0][8])
+        self.GoalEdit_2.setText(result[0][9])
+        self.GoalEdit_3.setText(result[0][10])
+
+    def addData(self):
+        date = self.ZhDatePicker.date
+        data = self.dataCombo.currentText()
+        name = self.NameEdit.text()
+        address = self.AddressEdit.text()
+        goal = self.GoalEdit.toPlainText()  # Corrected here
+        point = self.pointEdit.toPlainText()
+        important = self.importantedit.text()
+        difficult = self.difficultEdit.text()
+        prepare = self.prepareEdit.toPlainText()
+        input = self.InputEdit.toPlainText()
+        goal2 = self.GoalEdit_2.toPlainText()
+        goal3 = self.GoalEdit_3.toPlainText()
+        sql = SQLConnect(os.environ['MYSQL_USER'], os.environ['MYSQL_PASSWORD'])
+        sql.execute(f"INSERT INTO TeacherData VALUES ({date}, {name}, {address}, {goal}, {point}, {important}, {difficult}, {prepare}, {input}, {goal2}, {goal3})")
+        sql.commit()
+
+    def clearData(self):
+        self.NameEdit.clear()
+        self.AddressEdit.clear()
+        self.GoalEdit.clear()
+        self.pointEdit.clear()
+        self.importantedit.clear()
+        self.difficultEdit.clear()
+        self.prepareEdit.clear()
+        self.InputEdit.clear()
+        self.GoalEdit_2.clear()
+        self.GoalEdit_3.clear()
+        self.ImageLabel.clear()
+        self.ImageLabel_2.clear()
+        self.ImageLabel_3.clear()
+
+from qfluentwidgets import BodyLabel, CaptionLabel, DateEdit, ImageLabel, LineEdit, PlainTextEdit, PrimaryPushButton, \
+    ZhDatePicker

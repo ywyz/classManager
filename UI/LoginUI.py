@@ -20,7 +20,7 @@ class Ui_Login_UI(QtWidgets.QWidget):
 
     def setupUi(self, Login_UI):
         Login_UI.setObjectName("Login_UI")
-        Login_UI.resize(1400, 908)
+        Login_UI.resize(1400, 900)
         self.login_pic = QtWidgets.QLabel(Login_UI)
         self.login_pic.setGeometry(QtCore.QRect(0, 0, 831, 1041))
         self.login_pic.setObjectName("login_pic")

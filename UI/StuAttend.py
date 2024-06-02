@@ -10,7 +10,9 @@ import os
 
 
 from PySide6 import QtCore, QtGui, QtWidgets
-from Functions.SQLConnect import  SQLConnect
+from Functions.SQLConnect import SQLConnect
+import time
+
 
 class Ui_StuDailyAttend(object):
     def setupUi(self, StuDailyAttend):
@@ -62,6 +64,7 @@ class Ui_StuDailyAttend(object):
         self.retranslateUi(StuDailyAttend)
         QtCore.QMetaObject.connectSlotsByName(StuDailyAttend)
 
+
     def retranslateUi(self, StuDailyAttend):
         _translate = QtCore.QCoreApplication.translate
         StuDailyAttend.setWindowTitle(_translate("StuDailyAttend", "学生出勤管理系统"))
@@ -73,26 +76,72 @@ class Ui_StuDailyAttend(object):
         self.returnButton.setText(_translate("StuDailyAttend", "返回"))
         self.SaveButton_2.setText(_translate("StuDailyAttend", "导出"))
 
+    def handleItemChanged(self, item):
+        self.column_to_field = {
+            '日期': 'date',
+            '学号': 'stu_id',
+            '幼儿姓名': 'stu_name',
+            '出勤情况': 'is_attend',
+            '备注': 'reason',
+            '是否去医院': 'is_gotohospital'
+        }
+        # 获取修改后的值
+        new_value = item.text()
+        # 获取行和列
+        row = item.row()
+        stu_id = self.TableWidget.item(row, 1).text()  # 假设学号在第二列
+        date = self.TableWidget.item(row, 0).text()  # 假设日期在第一列
+        column = item.column()
+        column_name = self.TableWidget.horizontalHeaderItem(column).text()  # 获取列名
+        field = self.column_to_field[column_name]  # 获取对应的字段名
+
+        # 创建SQL连接
+        sql = SQLConnect(os.environ['MYSQL_USER'], os.environ['MYSQL_PASSWORD'])
+        sql.connect()
+
+        # 构建更新语句
+        update_query = f"UPDATE StudentDailyAttend SET {field} = '{new_value}' WHERE date = '{date}' AND stu_id = '{stu_id}'"
+        sql.execute(update_query)
+        sql.commit()  # 提交事务
+
     def loadData(self):
         sql = SQLConnect(os.environ['MYSQL_USER'], os.environ['MYSQL_PASSWORD'])
         sql.connect()
         self.date = self.ZhDatePicker.date
+        self.date = self.date.toString('yyyy-MM-dd')
         query = f"select * from StudentDailyAttend where date = '{self.date}'"
         results = sql.execute(query)
+        self.TableWidget.itemChanged.connect(self.handleItemChanged)
+        print(f"StudentDailyAttend results: {results}")  # 打印查询结果以进行检查
         if not results:
-            query = f"select * from StudentData"
+            query = f"select stu_id, stu_name from StudentData"
             results = sql.execute(query)
             for result in results:
-                result['date'] = self.date
-                result['is_attend'] = '是'  # 替换为你的默认值
-                result['reason'] = '无'  # 替换为你的默认值
-                result['is_gotohospital'] = '否'  # 替换为你的默认值
-        self.TableWidget.setRowCount(len(results))
-        self.TableWidget.setColumnCount(len(results[0]))
-        self.TableWidget.setHorizontalHeaderLabels(['日期','班级', '幼儿姓名', '出勤情况', '备注', '是否去医院'])
-        for i in range(len(results)):
-            for j in range(len(results[0])):
-                self.TableWidget.setItem(i, j, QtWidgets.QTableWidgetItem(str(results[i][j])))
+                result_dict = dict(result)  # 将结果转换为字典
+                insert_query = f"""
+                insert into StudentDailyAttend (date, class_name, stu_name, stu_id, is_attend, reason, is_gotohospital)
+                values ('{self.date}','中二','{result_dict['stu_name']}', '{result_dict['stu_id']}', '是', '无', '否')"""
+                sql.execute(insert_query)
+            sql.commit()  # 提交事务
+        query = f"select * from StudentDailyAttend where date = '{self.date}'"
+        results = sql.execute(query)
+        print(f"Updated StudentDailyAttend results: {results}")  # 打印更新后的查询结果以进行检查
+        keys = [ 'date', 'stu_id', 'stu_name', 'is_attend', 'reason', 'is_gotohospital']
 
-        self.TableWidget.setEditTriggers(QtWidgets.QTableWidget.AllEditTriggers)
+        self.TableWidget.setRowCount(len(results))
+        self.TableWidget.setColumnCount(len(keys))
+        self.TableWidget.setHorizontalHeaderLabels(['日期', '学号', '幼儿姓名', '出勤情况', '备注', '是否去医院'])
+        for i in range(len(results)):
+            for j in range(len(keys)):
+                value = results[i][keys[j]] if keys[j] in results[i] else None
+                if value is not None:
+                    self.TableWidget.setItem(i, j, QtWidgets.QTableWidgetItem(str(value)))
+        self.TableWidget.viewport().update()  # 刷新表格
+        print("TableWidget updated")  # 打印表格更新信息
+
+
+
+
+
+
 from qfluentwidgets import PrimaryPushButton, TableWidget, ZhDatePicker

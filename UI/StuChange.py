@@ -9,6 +9,8 @@
 
 
 from PySide6 import QtCore, QtGui, QtWidgets
+from Functions.SQLConnect import SQLConnect
+import os
 
 
 class Ui_StuChange(object):
@@ -50,6 +52,7 @@ class Ui_StuChange(object):
 
         self.retranslateUi(StuChange)
         QtCore.QMetaObject.connectSlotsByName(StuChange)
+        self.queryButton.clicked.connect(self.loadData)
 
     def retranslateUi(self, StuChange):
         _translate = QtCore.QCoreApplication.translate
@@ -59,4 +62,65 @@ class Ui_StuChange(object):
         self.changeButton.setText(_translate("StuChange", "修改"))
         self.deleteButton.setText(_translate("StuChange", "删除"))
         self.returnButton.setText(_translate("StuChange", "返回"))
+
+    def handleItemChanged(self, item):
+        self.column_to_field = {
+            '学号': 'stu_id',
+            '幼儿姓名': 'stu_name',
+            '性别': 'stu_sex',
+            '生日': 'stu_birthday',
+            '身份证号': 'stu_idcard',
+            '家庭住址': 'stu_address',
+            '母亲姓名': 'stu_moname',
+            '母亲身份证号': 'stu_moid',
+            '父亲姓名': 'stu_faname',
+            '父亲身份证号': 'stu_faid',
+            '母亲电话': 'stu_mophone',
+            '父亲电话': 'stu_faphone',
+            '家庭住址': 'stu_liveaddress',
+        }
+        # 获取修改后的值
+        new_value = item.text()
+        # 获取行和列
+        row = item.row()
+        stu_id = self.TableWidget.item(row, 1).text()  # 假设学号在第二列
+        date = self.TableWidget.item(row, 0).text()  # 假设日期在第一列
+        column = item.column()
+        column_name = self.TableWidget.horizontalHeaderItem(column).text()  # 获取列名
+        field = self.column_to_field[column_name]  # 获取对应的字段名
+
+        # 创建SQL连接
+        sql = SQLConnect(os.environ['MYSQL_USER'], os.environ['MYSQL_PASSWORD'])
+        sql.connect()
+
+        # 构建更新语句
+        update_query = f"UPDATE StudentHealthy SET {field} = '{new_value}' WHERE date = '{date}' AND stu_id = '{stu_id}'"
+        sql.execute(update_query)
+        sql.commit()  # 提交事务
+    def loadData(self):
+        sql = SQLConnect(os.environ['MYSQL_USER'], os.environ['MYSQL_PASSWORD'])
+        sql.connect()
+
+        query = f"select * from StudentData"
+        results = sql.execute(query)
+        self.TableWidget.itemChanged.connect(self.handleItemChanged)
+        keys = ['stu_id', 'stu_name','stu_sex', 'stu_birthday', 'stu_idcard','stu_address','stu_moname', 'stu_moid','stu_faname','stu_faid','stu_mophone','stu_faphone','stu_liveaddress']
+
+        # 检查查询结果是否为空
+        if not results:
+            print("No results found for the given date.")
+            return
+        # 设置表格的行数和列数
+        self.TableWidget.setRowCount(len(results))
+        self.TableWidget.setColumnCount(len(keys))
+
+        # 填充表格数据
+        for i, result in enumerate(results):
+            for j, key in enumerate(keys):
+                value = result.get(key)
+                if value is not None:
+                    self.TableWidget.setItem(i, j, QtWidgets.QTableWidgetItem(str(value)))
+
+        self.TableWidget.viewport().update()  # 刷新表格
+        print("TableWidget updated")  # 打印表格更新信息
 from qfluentwidgets import PrimaryPushButton, TableWidget
